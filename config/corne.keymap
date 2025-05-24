@@ -7,7 +7,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/mouse.h> // For mouse keys
+#include <dt-bindings/zmk/pointing.h>
 
 / {
     behaviors {
@@ -17,7 +17,7 @@
             tapping-term-ms = <130>;
             flavor = "tap-preferred";
             permissive-hold;
-            bindings = <&kp LALT>, <&kp Z>;
+            bindings = <&kp LALT &kp Z>;
             #binding-cells = <2>;
         };
         ht_lctrl_x: hold_tap_lctrl_x {
@@ -26,7 +26,7 @@
             tapping-term-ms = <130>;
             flavor = "tap-preferred";
             permissive-hold;
-            bindings = <&kp LCTRL>, <&kp X>;
+            bindings = <&kp LCTRL &kp X>;
             #binding-cells = <2>;
         };
         ht_lalt_semi: hold_tap_lalt_semi {
@@ -35,7 +35,7 @@
             tapping-term-ms = <130>;
             flavor = "tap-preferred";
             permissive-hold;
-            bindings = <&kp LALT>, <&kp SEMI>;
+            bindings = <&kp LALT &kp SEMI>;
             #binding-cells = <2>;
         };
         ht_lctrl_l: hold_tap_lctrl_l {
@@ -44,7 +44,7 @@
             tapping-term-ms = <130>;
             flavor = "tap-preferred";
             permissive-hold;
-            bindings = <&kp LCTRL>, <&kp L>;
+            bindings = <&kp LCTRL &kp L>;
             #binding-cells = <2>;
         };
     };
@@ -100,61 +100,67 @@
         tapping-term-ms = <130>; // Global tapping term for hold-taps in this keymap
 
         default_layer {
+            /*
             // -----------------------------------------------------------------------------------------
             // |  TAB |  Q  |  W  |  E  |  R   |  T   |    |  Y  |  U   |  I  |  O  |  P  | \ |
             // | ESC  |  A  |  S  |  D  |  F   |  G   |    |  H  |  J   |  K  |  L  |  ;  |  '  |
             // | LGUI |  Z  |  X  |  C  |  V   |  B   |    |  N  |  M   |  ,  |  .  |  /  | LGUI  |
             //                    | LWR | SHFT | BSPC |    | ENT | SPC  | RSE |
-            // Special: Z is LALT(hold)/Z(tap), X is LCTRL(hold)/X(tap)
-            //          ; is LALT(hold)/;(tap), L is LCTRL(hold)/L(tap)
-            // Combos: W+E=<, I+O=>, R+T=[, U+I=], D+F=(, J+K=), C+V={, M+,=}
+            */
             bindings = <
-                &kp TAB      &kp Q          &kp W          &kp E          &kp R         &kp T              &kp Y          &kp U         &kp I          &kp O         &kp P         &kp BSLH
-                &kp ESC      &kp A          &kp S          &kp D          &kp F         &kp G              &kp H          &kp J         &kp K          &ht_lctrl_l   &ht_lalt_semi &kp SQT
-                &kp LGUI     &ht_lalt_z     &ht_lctrl_x    &kp C          &kp V         &kp B              &kp N          &kp M         &kp COMMA      &kp DOT       &kp FSLH      &kp LGUI
-                                            &mo 1          &kp LSHFT     &kp BSPC                         &kp RET        &kp SPACE     &mo 2
+                &kp TAB  &kp Q      &kp W      &kp E      &kp R    &kp T         &kp Y      &kp U      &kp I      &kp O    &kp P         &kp BSLH
+                &kp ESC  &kp A      &kp S      &kp D      &kp F    &kp G         &kp H      &kp J      &kp K      &ht_lctrl_l &ht_lalt_semi &kp SQT
+                &kp LGUI &ht_lalt_z &ht_lctrl_x &kp C      &kp V    &kp B         &kp N      &kp M      &kp COMMA  &kp DOT  &kp FSLH      &kp LGUI
+                                    &mo 1      &kp LSHFT  &kp BSPC               &kp RET    &kp SPACE  &mo 2
             >;
         };
 
         lower_layer { // Layer 1
+            /*
             // -----------------------------------------------------------------------------------------
             // | TAB  |  !   |   :   |  #  |  ;   |   ?  |   |  @  |  7  |  8  |  9  |  %  |      |
             // | ESC  |  ^   |   =   |  _  |  $   |   * |   |  +  |  4  |  5  |  6  |  `  |      |
             // | LGUI |  <   |  "|"  |  -  |  >   |   /  |   |  &  |  1  |  2  |  3  |  ~  |      |
             //                       |       | SHFT | BSPC |   | ENT | SPC | FUN |
+            //  &kp TAB  &kp EXCL   &kp COLON  &kp HASH   &kp SEMI &kp QUES      &kp AT     &kp N7     &kp N8     &kp N9   &kp PRCNT     &trans
+            */
             bindings = <
-                &kp TAB      &kp EXCL       &kp COLON      &kp HASH       &kp SEMI      &kp QUES           &kp AT         &kp N7        &kp N8         &kp N9        &kp PRCNT     &trans
-                &kp ESC      &kp CARET      &kp EQUAL      &kp UNDER      &kp DLLR      &kp ASTRK          &kp PLUS       &kp N4        &kp N5         &kp N6        &kp GRAVE     &trans
-                &kp LGUI     &kp LT         &kp PIPE       &kp MINUS      &kp GT        &kp FSLH           &kp AMPS       &kp N1        &kp N2         &kp N3        &kp TILDE     &trans
-                                            &trans         &kp LSHFT     &kp BSPC                         &kp RET        &kp SPACE     &mo 3
+                &kp TAB  &kp Q      &kp W      &kp E      &kp R    &kp T         &kp Y      &kp U      &kp I      &kp O    &kp P         &kp BSLH
+                &kp ESC  &kp CARET  &kp EQUAL  &kp UNDER  &kp DLLR &kp ASTRK     &kp PLUS   &kp N4     &kp N5     &kp N6   &kp GRAVE     &trans
+                &kp LGUI &kp LT     &kp PIPE   &kp MINUS  &kp GT   &kp FSLH      &kp AMPS   &kp N1     &kp N2     &kp N3   &kp TILDE     &trans
+                                    &trans     &kp LSHFT  &kp BSPC               &kp RET    &kp SPACE  &mo 3
             >;
         };
 
         raise_layer { // Layer 2
+            /*
             // -----------------------------------------------------------------------------------------
             // |  TAB |       | MUTE | VOLDOWN | VOLUP |       |     | HOME | PGDN | PGUP |  END  |     |   |
             // |  ESC | PREV  | NEXT |  STOP   |  PLAY |       |     | LEFT | DOWN |  UP  | RIGHT |     |   |
             // | LGUI |       |      |         |       |       |     |      |      |      |       |     |   |
             //                       |         |  SHFT | BSPC  |     | ENT  |  SPC |       |
+            */
             bindings = <
-                &kp TAB      &trans         &kp C_MUTE     &kp C_VOL_DN   &kp C_VOL_UP  &trans             &kp HOME       &kp PG_DN     &kp PG_UP      &kp END       &trans        &trans
-                &kp ESC      &kp C_PREV     &kp C_NEXT     &kp C_STOP     &kp C_PP      &trans             &kp LEFT       &kp DOWN      &kp UP         &kp RIGHT     &trans        &trans
-                &kp LGUI     &trans         &trans         &trans         &trans        &trans             &trans         &trans        &trans         &trans        &trans        &trans
-                                            &trans         &kp LSHFT     &kp BSPC                         &kp RET        &kp SPACE     &trans
+                &kp TAB  &trans     &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP &trans    &kp HOME   &kp PG_DN  &kp PG_UP  &kp END  &trans        &trans
+                &kp ESC  &kp C_PREV &kp C_NEXT &kp C_STOP   &kp C_PP     &trans    &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT &trans        &trans
+                &kp LGUI &trans     &trans     &trans       &trans       &trans    &trans     &trans     &trans     &trans   &trans        &trans
+                                    &trans     &kp LSHFT    &kp BSPC               &kp RET    &kp SPACE  &trans
             >;
         };
 
-        fun_layer { // Layer 3
+        fun_layer { // Layer 3 - This is where line 126 was, causing the error
+            /*
             // -----------------------------------------------------------------------------------------
-            // | TAB  | RIGHTCLICK | MOUSEUP   | LEFTCLICK |       |       |     |  F7   |  F8  |  F9  |      |      |
-            // | ESC  | MOUSELEFT | MOUSEDOWN | MOUSERIGHT|       |       | F12 |  F4   |  F5  |  F6  |  `   |      |
-            // | LGUI |           |           |           |       |       | F11 |  F1   |  F2  |  F3  |  ~   |      |
-            //                       |           |  SHFT     | BSPC  |     | ENT   |  F10 |      |
+            // | TAB   |  LEFTCLICK | MOUSEUP   | RIGHTCLICK |       |       |      |      |   F7 |  F8  |  F9  |      |      |
+            // | ESC   | MOUSELEFT  | MOUSEDOWN | MOUSERIGHT |       |       |      |  F12 |   F4 |  F5  |  F6  |  `   |      |
+            // | BTCLR |        BT1 |       BT2 |        BT3 |   BT4 |   BT5 |      |  F11 |   F1 |  F2  |  F3  |  ~   |      |
+            //                      |           |            |  SHFT |  BSPC |      |  ENT |  F10 |      |
+            */
             bindings = <
-                &kp TAB      &mkp RBTN      &kp MUP        &mkp LBTN      &trans        &trans             &trans         &kp F7        &kp F8         &kp F9        &trans        &trans
-                &kp ESC      &kp MLEFT      &kp MDN        &kp MRIGHT     &trans        &trans             &kp F12        &kp F4        &kp F5         &kp F6        &kp GRAVE     &trans
-                &kp LGUI     &trans         &trans         &trans         &trans        &trans             &kp F11        &kp F1        &kp F2         &kp F3        &kp TILDE     &trans
-                                            &trans         &kp LSHFT     &kp BSPC                         &kp RET        &kp F10       &trans
+                &kp TAB  &mkp LCLK        &mmv MOVE_UP       &mkp RCLK        &trans   &trans        &trans     &kp F7     &kp F8     &kp F9   &trans        &trans
+                &kp ESC  &mmv MOVE_LEFT   &mmv MOVE_DOWN     &mmv MOVE_RIGHT  &trans   &trans        &kp F12    &kp F4     &kp F5     &kp F6   &kp GRAVE     &trans
+                &kp LGUI &trans           &trans             &trans           &trans   &trans        &kp F11    &kp F1     &kp F2     &kp F3   &kp TILDE     &trans
+                                          &trans             &kp LSHFT        &kp BSPC               &kp RET    &kp F10    &trans
             >;
         };
     };
