@@ -30,45 +30,45 @@
 
     combos {
         compatible = "zmk,combos";
-        timeout-ms = <50>; // Default timeout for combos
+        timeout-ms = <50>;
 
-        combo_less_than { // E + R = <
-            key-positions = <3 4>; // Corresponds to W and E in default_layer
+        combo_less_than { // C + V = <
+            key-positions = <27 28>;
             bindings = <&kp LT>;
-            layers = <0>; // Only on default_layer
+            layers = <0>;
         };
-        combo_greater_than { // U + I = >
-            key-positions = <7 8>; // Corresponds to I and O
+        combo_greater_than { // M + COMMA = >
+            key-positions = <31 32>;
             bindings = <&kp GT>;
             layers = <0>;
         };
         combo_left_bracket { // W + E = [
-            key-positions = <2 3>; // Corresponds to E and R
+            key-positions = <2 3>;
             bindings = <&kp LBKT>;
             layers = <0>;
         };
         combo_right_bracket { // I + O = ]
-            key-positions = <8 9>; // Corresponds to U and I
+            key-positions = <8 9>;
             bindings = <&kp RBKT>;
             layers = <0>;
         };
         combo_left_paren { // S + D = (
-            key-positions = <14 15>; // Corresponds to D and F
+            key-positions = <14 15>;
             bindings = <&kp LPAR>;
             layers = <0>;
         };
         combo_right_paren { // K + L = )
-            key-positions = <20 21>; // Corresponds to J and K
+            key-positions = <20 21>;
             bindings = <&kp RPAR>;
             layers = <0>;
         };
         combo_left_brace { // X + C = {
-            key-positions = <26 27>; // Corresponds to C and V
+            key-positions = <26 27>;
             bindings = <&kp LBRC>;
             layers = <0>;
         };
         combo_right_brace { // COMMA + DOT = }
-            key-positions = <32 33>; // Corresponds to M and COMMA
+            key-positions = <32 33>;
             bindings = <&kp RBRC>;
             layers = <0>;
         };
@@ -114,13 +114,13 @@
             //                       |         |  SHFT | BSPC  |     | ENT  |  SPC |       |
             bindings = <
                 &kp TAB  &trans     &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP &trans    &kp HOME   &kp PG_DN  &kp PG_UP  &kp END  &trans        &trans
-                &kp ESC  &kp C_PREV &kp C_NEXT &kp C_STOP   &kp C_PP     &trans    &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT &trans        &trans
+                &kp ESC  &kp C_PREV &kp C_NEXT &kp C_STOP   &kp C_PP     &trans    &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT &trans       &trans
                 &kp LGUI &trans     &trans     &trans       &trans       &trans    &trans     &trans     &trans     &trans   &trans        &trans
                                     &trans     &kp LSHFT    &bspc_del              &kp RET    &kp SPACE  &trans
             >;
         };
 
-        fun_layer { // Layer 3 - This is where line 126 was, causing the error
+        fun_layer { // Layer 3
             // -----------------------------------------------------------------------------------------
             // | TAB   |  LEFTCLICK | MOUSEUP   | RIGHTCLICK |       |       |      |      |   F7 |  F8  |  F9  |      |      |
             // | ESC   | MOUSELEFT  | MOUSEDOWN | MOUSERIGHT |       |       |      |  F12 |   F4 |  F5  |  F6  |  `   |      |
