@@ -35,42 +35,42 @@
         combo_less_than { // C + V = <
             key-positions = <27 28>;
             bindings = <&kp LT>;
-            layers = <0>;
+            layers = <0>, <1>;
         };
         combo_greater_than { // M + COMMA = >
             key-positions = <31 32>;
             bindings = <&kp GT>;
-            layers = <0>;
+            layers = <0>, <1>;
         };
         combo_left_bracket { // W + E = [
             key-positions = <2 3>;
             bindings = <&kp LBKT>;
-            layers = <0>;
+            layers = <0>, <1>;
         };
         combo_right_bracket { // I + O = ]
             key-positions = <8 9>;
             bindings = <&kp RBKT>;
-            layers = <0>;
+            layers = <0>, <1>;
         };
         combo_left_paren { // S + D = (
             key-positions = <14 15>;
             bindings = <&kp LPAR>;
-            layers = <0>;
+            layers = <0>, <1>;
         };
         combo_right_paren { // K + L = )
             key-positions = <20 21>;
             bindings = <&kp RPAR>;
-            layers = <0>;
+            layers = <0>, <1>;
         };
         combo_left_brace { // X + C = {
             key-positions = <26 27>;
             bindings = <&kp LBRC>;
-            layers = <0>;
+            layers = <0>, <1>;
         };
         combo_right_brace { // COMMA + DOT = }
             key-positions = <32 33>;
             bindings = <&kp RBRC>;
-            layers = <0>;
+            layers = <0>, <1>;
         };
     };
 
