@@ -17,7 +17,6 @@
             label = "MY_MOD_TAP";
             tapping-term-ms = <130>;
             flavor = "tap-preferred";
-            permissive-hold;
             bindings = <&kp>,  <&kp>;
             display-name = "My Mod Tap";
         };
