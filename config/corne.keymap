@@ -2,6 +2,7 @@
  * Copyright (c) 2020 The ZMK Contributors
  *
  * SPDX-License-Identifier: MIT
+ * TODO: https://github.com/urob/zmk-config/blob/main/config/base.keymap
  */
 
 #include <behaviors.dtsi>
@@ -11,41 +12,21 @@
 
 / {
     behaviors {
-        ht_lalt_z: hold_tap_lalt_z {
+        mt: mod_tap {
             compatible = "zmk,behavior-hold-tap";
-            label = "HT_LALT_Z";
+            label = "MY_MOD_TAP";
             tapping-term-ms = <130>;
             flavor = "tap-preferred";
             permissive-hold;
-            bindings = <&kp LALT &kp Z>;
-            #binding-cells = <2>;
+            bindings = <&kp>,  <&kp>;
+            display-name = "My Mod Tap";
         };
-        ht_lctrl_x: hold_tap_lctrl_x {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HT_LCTRL_X";
-            tapping-term-ms = <130>;
-            flavor = "tap-preferred";
-            permissive-hold;
-            bindings = <&kp LCTRL &kp X>;
-            #binding-cells = <2>;
-        };
-        ht_lalt_semi: hold_tap_lalt_semi {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HT_LALT_SEMI";
-            tapping-term-ms = <130>;
-            flavor = "tap-preferred";
-            permissive-hold;
-            bindings = <&kp LALT &kp SEMI>;
-            #binding-cells = <2>;
-        };
-        ht_lctrl_l: hold_tap_lctrl_l {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HT_LCTRL_L";
-            tapping-term-ms = <130>;
-            flavor = "tap-preferred";
-            permissive-hold;
-            bindings = <&kp LCTRL &kp L>;
-            #binding-cells = <2>;
+        bspc_del: backspace_delete {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp BSPC>, <&kp DELETE>;
+            mods = <MOD_LSFT|MOD_RSFT>;
+
         };
     };
 
@@ -108,10 +89,10 @@
             //                    | LWR | SHFT | BSPC |    | ENT | SPC  | RSE |
             */
             bindings = <
-                &kp TAB  &kp Q      &kp W      &kp E      &kp R    &kp T         &kp Y      &kp U      &kp I      &kp O    &kp P         &kp BSLH
-                &kp ESC  &kp A      &kp S      &kp D      &kp F    &kp G         &kp H      &kp J      &kp K      &ht_lctrl_l &ht_lalt_semi &kp SQT
-                &kp LGUI &ht_lalt_z &ht_lctrl_x &kp C      &kp V    &kp B         &kp N      &kp M      &kp COMMA  &kp DOT  &kp FSLH      &kp LGUI
-                                    &mo 1      &kp LSHFT  &kp BSPC               &kp RET    &kp SPACE  &mo 2
+                &kp TAB  &kp Q      &kp W       &kp E      &kp R    &kp T         &kp Y      &kp U      &kp I      &kp O         &kp P          &kp BSLH
+                &kp ESC  &kp A      &kp S       &kp D      &kp F    &kp G         &kp H      &kp J      &kp K      &kp L         &kp SEMI       &kp SQT
+                &kp LGUI &mt LALT Z &mt LCTRL X &kp C      &kp V    &kp B         &kp N      &kp M      &kp COMMA  &mt RALT DOT  &mt RCTRL FSLH &kp LGUI
+                                    &mo 1       &kp LSHFT  &bspc_del              &kp RET    &kp SPACE  &mo 2
             >;
         };
 
@@ -122,13 +103,12 @@
             // | ESC  |  ^   |   =   |  _  |  $   |   * |   |  +  |  4  |  5  |  6  |  `  |      |
             // | LGUI |  <   |  "|"  |  -  |  >   |   /  |   |  &  |  1  |  2  |  3  |  ~  |      |
             //                       |       | SHFT | BSPC |   | ENT | SPC | FUN |
-            //  &kp TAB  &kp EXCL   &kp COLON  &kp HASH   &kp SEMI &kp QUES      &kp AT     &kp N7     &kp N8     &kp N9   &kp PRCNT     &trans
             */
             bindings = <
-                &kp TAB  &kp Q      &kp W      &kp E      &kp R    &kp T         &kp Y      &kp U      &kp I      &kp O    &kp P         &kp BSLH
+                &kp TAB  &kp EXCL   &kp COLON  &kp HASH   &kp SEMI &kp QUES      &kp AT     &kp N7     &kp N8     &kp N9   &kp PRCNT     &trans
                 &kp ESC  &kp CARET  &kp EQUAL  &kp UNDER  &kp DLLR &kp ASTRK     &kp PLUS   &kp N4     &kp N5     &kp N6   &kp GRAVE     &trans
                 &kp LGUI &kp LT     &kp PIPE   &kp MINUS  &kp GT   &kp FSLH      &kp AMPS   &kp N1     &kp N2     &kp N3   &kp TILDE     &trans
-                                    &trans     &kp LSHFT  &kp BSPC               &kp RET    &kp SPACE  &mo 3
+                                    &trans     &kp LSHFT  &bspc_del              &kp RET    &kp SPACE  &mo 3
             >;
         };
 
@@ -144,7 +124,7 @@
                 &kp TAB  &trans     &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP &trans    &kp HOME   &kp PG_DN  &kp PG_UP  &kp END  &trans        &trans
                 &kp ESC  &kp C_PREV &kp C_NEXT &kp C_STOP   &kp C_PP     &trans    &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT &trans        &trans
                 &kp LGUI &trans     &trans     &trans       &trans       &trans    &trans     &trans     &trans     &trans   &trans        &trans
-                                    &trans     &kp LSHFT    &kp BSPC               &kp RET    &kp SPACE  &trans
+                                    &trans     &kp LSHFT    &bspc_del              &kp RET    &kp SPACE  &trans
             >;
         };
 
@@ -160,7 +140,7 @@
                 &kp TAB  &mkp LCLK        &mmv MOVE_UP       &mkp RCLK        &trans   &trans        &trans     &kp F7     &kp F8     &kp F9   &trans        &trans
                 &kp ESC  &mmv MOVE_LEFT   &mmv MOVE_DOWN     &mmv MOVE_RIGHT  &trans   &trans        &kp F12    &kp F4     &kp F5     &kp F6   &kp GRAVE     &trans
                 &kp LGUI &trans           &trans             &trans           &trans   &trans        &kp F11    &kp F1     &kp F2     &kp F3   &kp TILDE     &trans
-                                          &trans             &kp LSHFT        &kp BSPC               &kp RET    &kp F10    &trans
+                                          &trans             &kp LSHFT        &bspc_del              &kp RET    &kp F10    &trans
             >;
         };
     };
