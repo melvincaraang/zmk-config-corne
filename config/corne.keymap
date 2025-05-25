@@ -32,43 +32,43 @@
         compatible = "zmk,combos";
         timeout-ms = <50>; // Default timeout for combos
 
-        combo_less_than { // W + E = <
-            key-positions = <2 3>; // Corresponds to W and E in default_layer
+        combo_less_than { // E + R = <
+            key-positions = <3 4>; // Corresponds to W and E in default_layer
             bindings = <&kp LT>;
             layers = <0>; // Only on default_layer
         };
-        combo_greater_than { // I + O = >
-            key-positions = <8 9>; // Corresponds to I and O
+        combo_greater_than { // U + I = >
+            key-positions = <7 8>; // Corresponds to I and O
             bindings = <&kp GT>;
             layers = <0>;
         };
-        combo_left_bracket { // E + R = [
-            key-positions = <3 4>; // Corresponds to E and R
+        combo_left_bracket { // W + E = [
+            key-positions = <2 3>; // Corresponds to E and R
             bindings = <&kp LBKT>;
             layers = <0>;
         };
-        combo_right_bracket { // U + I = ]
-            key-positions = <7 8>; // Corresponds to U and I
+        combo_right_bracket { // I + O = ]
+            key-positions = <8 9>; // Corresponds to U and I
             bindings = <&kp RBKT>;
             layers = <0>;
         };
-        combo_left_paren { // D + F = (
-            key-positions = <15 16>; // Corresponds to D and F
+        combo_left_paren { // S + D = (
+            key-positions = <14 15>; // Corresponds to D and F
             bindings = <&kp LPAR>;
             layers = <0>;
         };
-        combo_right_paren { // J + K = )
-            key-positions = <19 20>; // Corresponds to J and K
+        combo_right_paren { // K + L = )
+            key-positions = <20 21>; // Corresponds to J and K
             bindings = <&kp RPAR>;
             layers = <0>;
         };
-        combo_left_brace { // C + V = {
-            key-positions = <27 28>; // Corresponds to C and V
+        combo_left_brace { // X + C = {
+            key-positions = <26 27>; // Corresponds to C and V
             bindings = <&kp LBRC>;
             layers = <0>;
         };
-        combo_right_brace { // M + COMMA = }
-            key-positions = <31 32>; // Corresponds to M and COMMA
+        combo_right_brace { // COMMA + DOT = }
+            key-positions = <32 33>; // Corresponds to M and COMMA
             bindings = <&kp RBRC>;
             layers = <0>;
         };
