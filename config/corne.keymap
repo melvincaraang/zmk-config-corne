@@ -127,10 +127,10 @@
             // | BTCLR |        BT1 |       BT2 |        BT3 |   BT4 |   BT5 |      |  F11 |   F1 |  F2  |  F3  |  ~   |      |
             //                      |           |            |  SHFT |  BSPC |      |  ENT |  F10 |      |
             bindings = <
-                &kp TAB  &mkp LCLK        &mmv MOVE_UP       &mkp RCLK        &trans   &trans        &trans     &kp F7     &kp F8     &kp F9   &trans        &trans
-                &kp ESC  &mmv MOVE_LEFT   &mmv MOVE_DOWN     &mmv MOVE_RIGHT  &trans   &trans        &kp F12    &kp F4     &kp F5     &kp F6   &kp GRAVE     &trans
-                &kp LGUI &trans           &trans             &trans           &trans   &trans        &kp F11    &kp F1     &kp F2     &kp F3   &kp TILDE     &trans
-                                          &trans             &kp LSHFT        &bspc_del              &kp RET    &kp F10    &trans
+                &kp TAB    &mkp LCLK        &mmv MOVE_UP       &mkp RCLK        &trans         &trans        &trans     &kp F7     &kp F8     &kp F9   &trans        &trans
+                &kp ESC    &mmv MOVE_LEFT   &mmv MOVE_DOWN     &mmv MOVE_RIGHT  &trans         &trans        &kp F12    &kp F4     &kp F5     &kp F6   &kp GRAVE     &trans
+                &kp BT_CLR &kp BT_SEL 0     &kp BT_SEL 1       &kp BT_SEL 2     &kp BT_SEL 3   &kp BT_SEL 4  &kp F11    &kp F1     &kp F2     &kp F3   &kp TILDE     &trans
+                                                               &trans           &kp LSHFT      &bspc_del     &kp RET    &kp F10    &trans
             >;
         };
     };
