@@ -71,13 +71,23 @@
             bindings = <&kp RBRC>;
             layers = <0>, <1>;
         };
+        combo_enable_macos {
+            key-positions = <7 12>;
+            bindings = <&to 0>;
+            layers = <1>;
+        };
+        combo_enable_windows {
+            key-positions = <7 12>;
+            bindings = <&to 1>;
+            layers = <0>;
+        };
     };
 
     keymap {
         compatible = "zmk,keymap";
         tapping-term-ms = <130>; // Global tapping term for hold-taps in this keymap
 
-        default_layer {
+        default_layer_macos { //Layer 0
             // -----------------------------------------------------------------------------------------
             // |  TAB |  Q  |  W  |  E  |  R   |  T   |    |  Y  |  U   |  I  |  O  |  P  | \ |
             // | ESC  |  A  |  S  |  D  |  F   |  G   |    |  H  |  J   |  K  |  L  |  ;  |  '  |
@@ -91,7 +101,21 @@
             >;
         };
 
-        lower_layer { // Layer 1
+        default_layer_windows { // Layer 1
+            // -----------------------------------------------------------------------------------------
+            // |  TAB |  Q  |  W  |  E  |  R   |  T   |    |  Y  |  U   |  I  |  O  |  P  | \ |
+            // | ESC  |  A  |  S  |  D  |  F   |  G   |    |  H  |  J   |  K  |  L  |  ;  |  '  |
+            // | LGUI |  Z  |  X  |  C  |  V   |  B   |    |  N  |  M   |  ,  |  .  |  /  | LGUI  |
+            //                    | LWR | SHFT | BSPC |    | ENT | SPC  | RSE |
+            bindings = <
+                &kp TAB   &kp Q       &kp W      &kp E      &kp R    &kp T         &kp Y      &kp U      &kp I      &kp O         &kp P          &kp BSLH
+                &kp ESC   &kp A       &kp S      &kp D      &kp F    &kp G         &kp H      &kp J      &kp K      &kp L         &kp SEMI       &kp SQT
+                &kp LCTRL &mt LGUI Z  &mt LALT X &kp C      &kp V    &kp B         &kp N      &kp M      &kp COMMA  &mt RALT DOT  &mt LGUI FSLH  &kp RCTRL
+                                      &bspc_del  &kp LSHFT  &mo 1                  &mo 2      &kp SPACE  &kp RET
+            >;
+        };
+
+        lower_layer { // Layer 2
             // -----------------------------------------------------------------------------------------
             // | TAB  |  !   |   :   |  #  |  ;   |   ?  |   |  @  |  7  |  8  |  9  |  %  |      |
             // | ESC  |  ^   |   =   |  _  |  $   |   * |   |  +  |  4  |  5  |  6  |  `  |      |
@@ -105,7 +129,7 @@
             >;
         };
 
-        raise_layer { // Layer 2
+        raise_layer { // Layer 3
             // -----------------------------------------------------------------------------------------
             // |  TAB |       | MUTE | VOLDOWN | VOLUP |       |     | HOME | PGDN | PGUP |  END  |     |   |
             // |  ESC | PREV  | NEXT |  STOP   |  PLAY |       |     | LEFT | DOWN |  UP  | RIGHT |     |   |
@@ -119,7 +143,7 @@
             >;
         };
 
-        fun_layer { // Layer 3
+        fun_layer { // Layer 4
             // -----------------------------------------------------------------------------------------
             // | TAB   |  LEFTCLICK | MOUSEUP   | RIGHTCLICK |       |       |      |      |   F7 |  F8  |  F9  |      |      |
             // | ESC   | MOUSELEFT  | MOUSEDOWN | MOUSERIGHT |       |       |      |  F12 |   F4 |  F5  |  F6  |  `   |      |
